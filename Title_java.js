@@ -124,3 +124,4 @@ function degToCompass(deg) {
 }
 
 // ソンさんのブランチ
+// Pull Request
