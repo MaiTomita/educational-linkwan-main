@@ -123,4 +123,5 @@ function degToCompass(deg) {
   return `${dirs[idx]} (${Math.round(deg)}°)`;
 }
 
-// ソンさんのコード
+// ソンさんのブランチ
+// Pull Request
