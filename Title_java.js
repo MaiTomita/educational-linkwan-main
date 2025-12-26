@@ -122,3 +122,5 @@ function degToCompass(deg) {
   const idx = Math.round(deg / 22.5) % 16;
   return `${dirs[idx]} (${Math.round(deg)}°)`;
 }
+
+//富田
