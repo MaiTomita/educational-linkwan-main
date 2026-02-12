@@ -1,0 +1,17 @@
+# Node
+node_modules/
+
+# Env
+.env
+server/.env
+client/.env
+
+# Builds
+client/dist/
+
+# Credentials
+server/credentials/
+*.pem
+
+# OS
+.DS_Store
