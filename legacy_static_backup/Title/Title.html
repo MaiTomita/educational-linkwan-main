@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>リンクワン タイトル画面</title>
+  <link rel="stylesheet" href="Title_css.css">
+  <script>
+  (function(d) {
+    var config = {
+      kitId: 'fyo5hnq',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+</head>
+<body>
+ <div class="wrapper">
+    <div class="container">
+      <img id="logo" src="images/logo_linkwan.svg" alt="リンクワン ロゴ">
+      <div id="weather" aria-live="polite">
+        <div class="weather-row">
+          <span class="weather-date" id="weather-date">--/-- (--)</span>
+        </div>
+        <div class="weather-row">
+          <span class="weather-temp" id="weather-temp">--℃</span>
+          <span class="weather-desc" id="weather-desc">--</span>
+        </div>
+        <div class="weather-row">
+          <span class="weather-wind" id="weather-wind">風向: --</span>
+        </div>
+      </div>
+  <div id="tap-to-start" style="display:none;">タップではじめる</div>
+    </div>
+  </div>
+</body>
+  <script src="Title_java.js"></script>
+</html>

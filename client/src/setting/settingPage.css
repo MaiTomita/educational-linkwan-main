@@ -1,0 +1,264 @@
+@font-face {
+  font-family: 'KiwiMaru';
+  src: url('/Fonts/KiwiMaru-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-color: rgb(244, 236, 222);
+  --card-bg: #ffffff;
+  --text-main: #42210b;
+  --accent-green: #a76c86;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  font-family: 'KiwiMaru', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    'Hiragino Kaku Gothic ProN', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 414px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.settings-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.middle-section {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  box-sizing: border-box;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.profile-item {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 12px;
+}
+
+.profile-item.owner .avatar-row {
+  margin-left: 0;
+}
+
+.owner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.owner-name {
+  font-size: 14px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.login-status {
+  font-size: 12px;
+  color: var(--text-main);
+  opacity: 0.75;
+}
+
+.notifications-header,
+.help-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 8px 0 12px 0;
+}
+
+.help-header {
+  margin: 12px 0 8px 0;
+}
+
+.notif-icon,
+.help-icon {
+  font-size: 18px;
+  color: #666;
+}
+
+.chevron {
+  font-size: 18px;
+  color: #999;
+  margin-right: 4px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border: 1px solid #ddd;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #666;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.card-logo {
+  display: block;
+  width: 100px;
+  height: auto;
+  margin: 18px auto 0;
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.divider {
+  height: 1.5px;
+  background-color: var(--text-main);
+  margin: 0 0 20px 0;
+  border: none;
+  border-radius: 1.5px;
+}
+
+.middle-section > .divider {
+  margin-left: -40px;
+  width: calc(100% + 40px);
+  box-sizing: border-box;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.setting-label {
+  font-size: 16px;
+  color: var(--text-main);
+  padding-left: 12px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  height: 31px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e9e9ea;
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 27px;
+  width: 27px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--accent-green);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.auth-error {
+  margin-top: 10px;
+  margin-left: -40px;
+  font-size: 13px;
+  color: #b00020;
+}
+
+.logout,
+.back {
+  margin-top: 14px;
+  margin-left: -40px;
+  border: 1px solid rgba(66, 33, 11, 0.2);
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+}
