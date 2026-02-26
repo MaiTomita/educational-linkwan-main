@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+/* 変数定義（色などの共通設定） */
+:root {
+    --bg-color: rgb(244, 236, 222); /* 指定の背景色 */
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-color: #eeeeee;
+    --accent-color: #34C759; /* iOS風の緑色 */
+    --switch-bg-off: #e9e9ea;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center; /* 画面中央に配置 */
+    min-height: 100vh;
+}
+
+/* iPhone画面幅のコンテナ */
+.screen-container {
+    width: 100%;
+    max-width: 400px; /* スマートフォンサイズに制限 */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* ページタイトル */
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 40px 0 20px 10px;
+}
+
+/* 白い角丸長方形カード */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+/* プロフィールセクション */
+.profile-section {
+    display: flex;
+    justify-content: space-around; /* 均等配置 */
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.profile-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* アバター画像（円形）のスタイル */
+.avatar {
+    width: 70px;
+    height: 70px;
+    background-color: #f2f2f7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 横線 */
+.divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0 -24px 20px -24px; /* カードの端まで線を伸ばすためのネガティブマージン */
+}
+
+/* 設定リストの各行 */
+.setting-row {
+    display: flex;
+    justify-content: space-between; /* 文字とスイッチを左右に配置 */
+    align-items: center;
+    padding: 12px 0;
+}
+
+.label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* --- iOS風トグルスイッチのCSS --- */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+}
+
+/* 元のチェックボックスは隠す */
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 背景部分（スライダー） */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--switch-bg-off);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* 白い丸部分 */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 27px;
+    width: 27px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* ONになった時のスタイル */
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}

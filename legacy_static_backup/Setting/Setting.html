@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設定画面</title>
+    <style>
+        /* ローカルフォントを読み込む */
+        @font-face {
+            font-family: 'KiwiMaru';
+            src: url("../Fonts/KiwiMaru-Regular.ttf") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            /* 指定のRGB背景色 */
+            --bg-color: rgb(244, 236, 222);
+            --card-bg: #ffffff;
+            --text-main: #42210B;
+            --accent-green: #a76c86;
+            --gray-line: #eee;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'KiwiMaru', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* iPhoneの標準的な幅に制限 */
+        .container {
+            width: 100%;
+            max-width: 414px; /* iPhone Pro Maxサイズ */
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0 20px 10px;
+            color: var(--text-main);
+        }
+
+        /* 白の角丸長方形 */
+        .settings-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .middle-section {
+            /* 通知・ヘルプの行をカード内で中央付近に揃える */
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 40px; /* 画面中央よりやや右へ寄せる */
+            box-sizing: border-box;
+        }
+
+        /* プロフィールエリア */
+        .profile-container {
+            display: flex;
+            flex-direction: column; /* アイコンを縦に並べる */
+            align-items: flex-start; /* 左揃えに変更 */
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .profile-item {
+            text-align: left; /* 左揃え */
+            display: flex;
+            flex-direction: column; /* 名前を上に、アイコンは下に */
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .avatar-row {
+            display: flex; /* 愛犬の隣に＋を置くときに横並びにする */
+            align-items: center;
+            gap: 12px;
+            margin-left: 12px; /* 名前より少し右に配置 */
+        }
+
+        /* 飼い主アイコン横の名前・編集リンク */
+        .owner-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .owner-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* オーナーだけアバターローの左余白を無効にする */
+        .profile-item.owner .avatar-row {
+            margin-left: 0;
+        }
+
+        .owner-name {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .edit-profile {
+            font-size: 13px;
+            color: var(--text-main);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 通知セクションのタイトル（ベル付き） */
+        .notifications-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 8px 0 12px 0;
+        }
+
+        .notif-icon {
+            font-size: 18px;
+            color: #666;
+        }
+        .help-icon {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .help-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 12px 0 8px 0;
+        }
+
+        .chevron {
+            font-size: 18px;
+            color: #999;
+            margin-right: 4px;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            /* 上に名前が来るのでmargin-bottomは不要 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .add-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #666;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            flex-shrink: 0;
+        }
+
+        /* カード下部のロゴ */
+        .card-logo {
+            display: block;
+            width: 100px; /* 少し大きめに調整 */
+            height: auto;
+            margin: 18px auto 0;
+            filter: none; /* 色がSVG内で決まる場合は不要 */
+        }
+
+        .profile-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px; /* 名前とアイコンの間の余白 */
+        }
+
+        /* 横線 */
+        .divider {
+            height: 1.5px; /* 以前より太め */
+            background-color: var(--text-main); /* 文字色と同じ */
+            margin: 0 0 20px 0;
+            border: none;
+            border-radius: 1.5px; /* 先端を丸く */
+        }
+
+        /* middle-section 内にある divider を上の divider と同じ横位置に揃える */
+        .middle-section > .divider {
+            margin-left: -40px; /* .middle-section の padding-left と同じ値で引き戻す */
+            width: calc(100% + 40px);
+            box-sizing: border-box;
+        }
+
+        /* 通知設定行 */
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .setting-label {
+            font-size: 16px;
+            color: var(--text-main);
+            padding-left: 12px; /* 左側に少し余白を追加して右寄せに見せる */
+        }
+
+        /* iOS風トグルスイッチ */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 51px;
+            height: 31px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #e9e9ea;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 27px;
+            width: 27px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-green);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="settings-card">
+    <div class="profile-container">
+            <div class="profile-item owner">
+                <div class="profile-name">飼い主</div>
+                <div class="avatar-row">
+                    <div class="avatar">👤</div>
+                    <div class="owner-info">
+                        <span class="owner-name">名前</span>
+                        <a href="#" class="edit-profile">プロフィールを編集</a>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-item">
+                <div class="profile-name">愛犬</div>
+                <div class="avatar-row">
+                    <div class="avatar">🐶</div>
+                    <div class="add-circle">＋</div>
+                </div>
+            </div>
+        </div>
+        <hr class="divider">
+
+        <div class="middle-section">
+
+            <div class="notifications-header">
+                <div class="notif-icon">🔔</div>
+                <div class="notif-title">通知設定</div>
+            </div>
+
+            <div class="setting-row">
+                <span class="setting-label">散歩アラーム</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-row">
+                <span class="setting-label">プッシュ通知</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <hr class="divider">
+
+            <div class="help-header">
+                <div class="help-icon">❓</div>
+                <div class="help-title">ヘルプ</div>
+            </div>
+
+            <div class="setting-row">
+                <span class="setting-label">アプリの使い方</span>
+                <span class="chevron">&gt;</span>
+            </div>
+
+            <div class="setting-row">
+                <span class="setting-label">よくある質問</span>
+                <span class="chevron">&gt;</span>
+            </div>
+
+            <div class="setting-row">
+                <span class="setting-label">お問い合わせ</span>
+                <span class="chevron">&gt;</span>
+            </div>
+        </div>
+        <img src="../images/logo_linkwan.svg" alt="Linkwan" class="card-logo">
+    </div>
+</div>
+
+</body>
+</html>
