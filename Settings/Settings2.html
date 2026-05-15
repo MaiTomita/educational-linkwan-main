@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings2</title>
+  <style>
+    @font-face {
+      font-family: 'KiwiMaru';
+      src: url("../Fonts/KiwiMaru-Regular.ttf") format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root{
+      --bg-color: rgb(244, 236, 222);
+      --card-bg: #ffffff;
+      --text-main: #42210B;
+    }
+
+    html,body{height:100%;margin:0;padding:0;font-family:'KiwiMaru', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", sans-serif;background:var(--bg-color);display:flex;justify-content:center;}
+
+    .container{
+      width:100%;max-width:414px;padding:20px 20px 100px 20px;box-sizing:border-box;height:100vh;display:flex;align-items:flex-start;}
+
+    .card-wrap{width:100%;}
+
+    .settings-card{
+      background:var(--card-bg);
+      border-radius:20px;
+      padding:24px 20px 40px 20px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.05);
+      position:relative; /* for absolute position of close */
+      box-sizing:border-box;
+    }
+    /* ensure exact sizing/placement parity with Settings.html */
+    .settings-card {
+      width: 100%;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    /* close button in the top-left of the white card */
+    .close-btn{
+      position:absolute;
+      top:12px;
+      right:12px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:transparent;
+      border:2px solid var(--text-main);
+      color:var(--text-main);
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      box-sizing:border-box;
+    }
+
+    /* sample content to show card size */
+    .title{font-size:20px;font-weight:700;color:var(--text-main);text-align:center;margin-top:8px;margin-bottom:12px}
+    .body-text{color:#6b4a3a;line-height:1.6}
+
+    /* profile layout inside the white card */
+    .profile {
+      text-align: center; /* avatar stays centered */
+      margin-top: 8px;
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin: 12px auto 8px;
+      border: 1px solid #ddd;
+      flex-shrink: 0;
+    }
+
+
+    .profile-info {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: left; /* fields are left-aligned */
+      padding: 0; /* we'll manage left padding per-field so underline lines up */
+    }
+
+    .profile-field {
+      position: relative;
+      padding: 10px 20px; /* horizontal padding matches card inner padding (20px) */
+      margin: 6px 0;
+      box-sizing: border-box;
+      min-height: 36px;
+    }
+
+    /* draw a single line that starts under the text (left padding) and
+       continues to the right inner edge (right padding) */
+    .profile-field::after {
+      content: "";
+      position: absolute;
+      left: 20px;   /* same as horizontal padding: line starts where text starts */
+      right: 20px;  /* stop before card's right inner padding */
+      bottom: 0.6rem; /* place slightly below the text */
+      height: 1.5px;
+      background: var(--text-main);
+      border-radius: 1px;
+    }
+
+    .profile-field .value {
+      font-size: 18px;
+      color: var(--text-main);
+      display: inline-block;
+      font-weight: 600;
+      margin-left: 0; /* aligned to left padding */
+    }
+
+    .profile-field.nickname .value {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card-wrap">
+      <div class="settings-card">
+        <button class="close-btn" aria-label="閉じる">×</button>
+
+        <div class="profile">
+          <div class="profile-avatar" aria-hidden="true">👤</div>
+          <div class="profile-info">
+            <div class="profile-field nickname">
+              <span class="value">まい</span>
+            </div>
+            <div class="profile-field full-name">
+              <span class="value">名前 (例: 田中 まい)</span>
+            </div>
+            <div class="profile-field gender">
+              <span class="value">性別: 女</span>
+            </div>
+            <div class="profile-field birthday">
+              <span class="value">生年月日: 1990/01/01</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+  <script src="Settings2.js"></script>
+
+</body>
+</html>
