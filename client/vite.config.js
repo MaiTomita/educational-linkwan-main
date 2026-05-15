@@ -4,11 +4,14 @@ import path from 'node:path';
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 5173,
+    strictPort: true,
+  },
   build: {
     rollupOptions: {
       input: {
-        Title: path.resolve(__dirname, 'Title.html'),
-        Setting: path.resolve(__dirname, 'Setting.html')
+        main: path.resolve(__dirname, 'index.html')
       }
     }
   }

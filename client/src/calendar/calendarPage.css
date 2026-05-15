@@ -1,0 +1,297 @@
+:root {
+    --bg-color: #f7eee2;
+    --header-bg: #e2c09c;
+    --text-color: #5d4037;
+    --saturday-color: #2196f3;
+    --sunday-color: #f44336;
+    --card-bg: #ffffff;
+    --list-item-bg: #efe1d1;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app-layout {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    background-color: var(--bg-color);
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 600px; 
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0; /* 左右のパディングを0にして端まで広げる */
+    box-sizing: border-box;
+}
+
+/* Header / Top Bar */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px; /* 内部要素のみにパディングを付与 */
+    margin-bottom: 10px;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    width: 30px;
+}
+
+.menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--header-bg);
+    border-radius: 2px;
+}
+
+.center-info {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.date-weather-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.top-right-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.start-screen-btn {
+    background-color: var(--header-bg);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.user-profile-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+}
+
+.user-profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.default-avatar {
+    font-size: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 1001;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 1000;
+}
+
+.sidebar-overlay.open {
+    display: block;
+}
+
+.sidebar-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* React Calendar Customization */
+.calendar-card {
+    background: white;
+    border-radius: 0; /* 左右端まで広げるため角丸を削除 */
+    padding: 10px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.react-calendar {
+    width: 100% !important;
+    border: none !important;
+    font-family: inherit !important;
+    background: transparent !important;
+}
+
+.react-calendar__navigation {
+    margin-bottom: 10px !important;
+    padding: 0 10px !important;
+}
+
+.react-calendar__navigation button {
+    color: var(--text-color) !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    text-decoration: none !important;
+    font-weight: bold !important;
+    color: var(--text-color);
+    padding: 10px 0 !important;
+}
+
+.react-calendar__month-view__weekdays__weekday--weekend {
+    color: var(--sunday-color) !important;
+}
+
+.react-calendar__month-view__weekdays__weekday:nth-child(6) {
+    color: var(--saturday-color) !important;
+}
+
+.react-calendar__tile {
+    padding: 15px 5px !important;
+    position: relative;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.react-calendar__tile--now {
+    background: #fff9c4 !important;
+    border-radius: 10px;
+}
+
+.react-calendar__tile--active {
+    background: var(--header-bg) !important;
+    color: white !important;
+    border-radius: 10px;
+}
+
+.pet-icon-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    margin-top: 4px;
+}
+
+/* Schedule List */
+.schedule-list {
+    background-color: var(--list-item-bg);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 0 10px 80px 10px; /* 左右の余白を再度付与 */
+}
+
+.list-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    cursor: pointer; /* クリック可能表示 */
+    transition: background 0.2s;
+}
+
+.schedule-item:active {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.item-date {
+    width: 60px;
+    font-weight: bold;
+}
+
+.item-content {
+    flex-grow: 1;
+}
+
+.pet-icon-small {
+    width: 8px;
+    height: 8px;
+    background-color: #ff9800;
+    border-radius: 50%;
+}
+
+/* Nav Bar */
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 100;
+}
+
+.nav-item {
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.nav-item.active {
+    opacity: 1;
+}
