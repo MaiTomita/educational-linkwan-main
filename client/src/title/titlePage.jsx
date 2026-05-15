@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './titlePage.css';
 
 import { authWithGoogleCredential, getMe } from '../shared/api.js';
@@ -63,6 +64,7 @@ function degToCompass(deg) {
 }
 
 export function TitlePage() {
+  const navigate = useNavigate();
   const googleButtonRef = useRef(null);
   const [me, setMe] = useState(null);
   const [authError, setAuthError] = useState('');
@@ -186,7 +188,7 @@ export function TitlePage() {
               setAuthError('');
               const result = await authWithGoogleCredential(response.credential);
               setMe({ ok: true, user: result.user });
-              window.location.href = '/Setting.html';
+              navigate('/calendar');
             } catch (e) {
               const message = e instanceof Error ? e.message : 'Login failed';
               setAuthError(message);
@@ -250,15 +252,6 @@ export function TitlePage() {
           {isLoggedIn ? (
             <div className="login-state">
               <div className="login-text">ログイン中: {me.user?.name || me.user?.email}</div>
-              <button
-                className="go-setting"
-                type="button"
-                onClick={() => {
-                  window.location.href = '/Setting.html';
-                }}
-              >
-                設定へ
-              </button>
             </div>
           ) : (
             <>
@@ -269,7 +262,11 @@ export function TitlePage() {
           {authError ? <div className="login-error">{authError}</div> : null}
         </div>
 
-        <div id="tap-to-start" style={{ display: 'none' }}>
+        <div 
+          id="tap-to-start" 
+          style={{ display: 'none', cursor: 'pointer' }}
+          onClick={() => navigate('/calendar')}
+        >
           タップではじめる
         </div>
       </div>
