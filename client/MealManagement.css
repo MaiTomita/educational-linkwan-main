@@ -1,0 +1,200 @@
+:root {
+    --bg-color: #f2e8d9;
+    --card-bg: #fffcf7;
+    --accent-brown: #9b7e7e;
+    --text-main: #5a4a42;
+    --intake-color: #e99a7a;
+    --target-color: #d4a35d;
+    --meal-bg: #ece0d5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+}
+
+body {
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.app-container {
+    width: 375px; /* iPhone SE/8 width approx */
+    background-color: var(--bg-color);
+    border-radius: 30px;
+    padding: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+    min-height: 812px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #c5b4a0;
+    margin: 4px 0;
+    border-radius: 2px;
+}
+
+.top-date-info {
+    background: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.launch-btn {
+    background: #d4bda6;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-card {
+    background: white;
+    padding: 5px 15px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+.pet-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.pet-name {
+    font-weight: bold;
+    font-size: 18px;
+    flex-grow: 1;
+}
+
+.med-btn {
+    background: var(--accent-brown);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* Summary Card */
+.summary-card {
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.summary-card h3 {
+    font-size: 16px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    background: #e0e0e0;
+    height: 18px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, #f8c9b5, #f1a98c);
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.flag-icon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    font-size: 16px;
+}
+
+.calorie-stats {
+    display: flex;
+    justify-content: space-around;
+}
+
+.label { font-size: 10px; color: #888; }
+.value { font-size: 24px; font-weight: bold; }
+.value small { font-size: 12px; }
+.intake { color: var(--intake-color); }
+.target { color: var(--target-color); }
+
+/* Meal List */
+.meal-item {
+    background: var(--meal-bg);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.meal-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #c5b4a0;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.meal-details {
+    padding: 5px 15px 10px;
+    font-size: 13px;
+    color: #444;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* Footer Nav */
+.footer-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.nav-item {
+    color: #d4bda6;
+}
