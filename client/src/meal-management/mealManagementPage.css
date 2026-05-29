@@ -1,0 +1,259 @@
+:root {
+  --meal-bg-color: #f2e8d9;
+  --meal-card-bg: #fffcf7;
+  --meal-accent: #9b7e7e;
+  --meal-text: #5a4a42;
+  --meal-intake: #e99a7a;
+  --meal-target: #d4a35d;
+  --meal-list-bg: #ece0d5;
+  --meal-soft: #d4bda6;
+}
+
+.meal-layout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 0%, #f8f1e6 0%, var(--meal-bg-color) 55%, #eadbc8 100%);
+}
+
+.meal-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 16px 14px 88px;
+  color: var(--meal-text);
+  box-sizing: border-box;
+}
+
+.meal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.meal-menu-btn {
+  width: 34px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.meal-menu-btn span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  border-radius: 2px;
+  background: #c5b4a0;
+  margin: 4px 0;
+}
+
+.meal-date-pill {
+  background: #fff;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.meal-start-btn {
+  border: none;
+  background: var(--meal-soft);
+  color: #fff;
+  border-radius: 12px;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.meal-profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.meal-profile-card {
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  width: 63%;
+}
+
+.meal-pet-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3eee8;
+  margin-right: 12px;
+}
+
+.meal-pet-name {
+  font-size: 18px;
+  font-weight: 800;
+  flex-grow: 1;
+}
+
+.meal-profile-arrow {
+  color: #9f8a79;
+}
+
+.meal-med-btn {
+  border: none;
+  background: var(--meal-accent);
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.meal-summary-card {
+  background: var(--meal-card-bg);
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 14px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(91, 61, 36, 0.08);
+}
+
+.meal-summary-card h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.meal-progress-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 18px;
+  margin-bottom: 14px;
+}
+
+.meal-progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f8c9b5 0%, #f1a98c 100%);
+  position: relative;
+}
+
+.meal-flag {
+  position: absolute;
+  right: -8px;
+  top: -6px;
+}
+
+.meal-calorie-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.meal-stat-label {
+  margin: 0 0 4px;
+  color: #8f8276;
+  font-size: 11px;
+}
+
+.meal-stat-value {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.meal-stat-value small {
+  font-size: 12px;
+}
+
+.meal-intake {
+  color: var(--meal-intake);
+}
+
+.meal-target {
+  color: var(--meal-target);
+}
+
+.meal-list {
+  display: grid;
+  gap: 10px;
+}
+
+.meal-card-item {
+  background: var(--meal-list-bg);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.meal-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #c5b4a0;
+  font-weight: 700;
+}
+
+.meal-card-details {
+  padding: 6px 14px 10px;
+  font-size: 13px;
+}
+
+.meal-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.meal-nav-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  padding: 12px 0 16px;
+  display: flex;
+  justify-content: space-around;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.meal-nav-item {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  opacity: 0.45;
+  cursor: pointer;
+}
+
+.meal-nav-item.active {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .meal-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .meal-profile-card {
+    width: 58%;
+  }
+
+  .meal-pet-name {
+    font-size: 16px;
+  }
+}

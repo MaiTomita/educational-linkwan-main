@@ -172,7 +172,7 @@ const CalendarPage = () => {
                 <div className="nav-bar">
                     <div className="nav-item">🏠</div>
                     <div className="nav-item">📋</div>
-                    <div className="nav-item">🦴</div>
+                    <div className="nav-item" onClick={() => navigate('/meal-management')}>🦴</div>
                     <div className="nav-item active">📅</div>
                 </div>
             </div>
