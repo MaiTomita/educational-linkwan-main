@@ -86,3 +86,5 @@
 - **エラー: "no registered origin"**: Google Cloud ConsoleのOAuth設定で「承認済みJavaScriptオリジン」にlocalhostを追加してください
 - **Sheets APIエラー**: Service AccountのメールアドレスがSpreadsheetに編集者として共有されているか確認してください
 - **ログイン後リダイレクトしない**: クライアントの`.env`とバックエンドの`.env`でCLIENT_IDが一致しているか確認してください
+
+tanaka
